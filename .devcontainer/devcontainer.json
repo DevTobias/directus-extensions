@@ -1,6 +1,11 @@
 {
   "name": "directus",
   "image": "mcr.microsoft.com/vscode/devcontainers/typescript-node:18-bullseye",
+  "remoteUser": "node",
+  "mounts": [
+    "source=node_modules,target=${containerWorkspaceFolder}/node_modules,type=volume"
+  ],
+  "postCreateCommand": "sudo chown node node_modules",
   "customizations": {
     "vscode": {
       "settings": {
@@ -18,9 +23,8 @@
         "explorer.fileNesting.enabled": true,
         "explorer.fileNesting.expand": false,
         "explorer.fileNesting.patterns": {
-          "package.json": "tsconfig.json",
-          "Taskfile.yml": ".gitignore,.editorconfig",
-          "docker-compose.yml": "Dockerfile"
+          "package.json": "tsconfig.json,.gitignore,.editorconfig",
+          "Taskfile.yml": "Dockerfile,docker-compose.yml"
         },
         "files.exclude": {
           "**/yarn.lock": true,
@@ -35,12 +39,12 @@
         "typescript.preferences.importModuleSpecifier": "non-relative",
 
         // ESLint
-        "eslint.validate": ["svelte", "javascript", "typescript", "css"],
-        "eslint.probe": ["svelte", "javascript", "typescript", "css"],
+        "eslint.validate": ["javascript", "typescript"],
+        "eslint.probe": ["javascript", "typescript"],
         "eslint.codeAction.showDocumentation": {
           "enable": true
         },
-        "eslint.workingDirectories": ["extensions/image-optimizer"],
+        "eslint.workingDirectories": ["image_optimizer"],
 
         //! Formatters
         "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
@@ -48,21 +52,18 @@
           "editor.defaultFormatter": "esbenp.prettier-vscode"
         },
         "[typescript][javascript]": {
-          "editor.defaultFormatter": "esbenp.prettier-vscode"
+          "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
         }
       },
       "extensions": [
         "streetsidesoftware.code-spell-checker-german",
         "streetsidesoftware.code-spell-checker",
-        "naumovs.color-highlight",
         "ms-azuretools.vscode-docker",
-        "naumovs.color-highlight",
         "EditorConfig.EditorConfig",
         "IronGeek.vscode-env",
         "dbaeumer.vscode-eslint",
         "esbenp.prettier-vscode",
-        "rvest.vs-code-prettier-eslint",
-        "Prisma.prisma"
+        "rvest.vs-code-prettier-eslint"
       ]
     }
   }

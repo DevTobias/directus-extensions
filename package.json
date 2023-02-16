@@ -1,0 +1,9 @@
+{
+  "name": "directus-extensions",
+  "private": true,
+  "license": "MIT",
+  "workspaces": [
+    "modules/*",
+    "image_optimizer"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "name": "directus-extension-image-optimizer",
+  "version": "1.0.0",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "build": "esbuild src/index.ts --minify --external:sharp --bundle --platform=node --outfile=dist/index.js --format=cjs",
+    "build:dev": "esbuild src/index.ts --external:sharp --bundle --platform=node --outfile=../cms/extensions/hooks/image-optimizer/index.js --format=cjs",
+    "dev": "nodemon -w src -e ts -x \"yarn build:dev\""
+  },
+  "dependencies": {
+    "@directus/extensions-sdk": "9.22.4",
+    "directus": "^9.22.4",
+    "imonizer": "^1.4.0"
+  },
+  "devDependencies": {
+    "@modules/eslint-config": "^1.0.0",
+    "@modules/prettier-config": "^1.0.0",
+    "@types/node": "^18.13.0",
+    "esbuild": "^0.17.8",
+    "nodemon": "^2.0.20",
+    "typescript": "^4.9.5"
+  },
+  "prettier": "@modules/prettier-config",
+  "eslintConfig": {
+    "extends": [
+      "@modules/eslint-config"
+    ]
+  }
+}
