@@ -1,0 +1,12 @@
+version: '3'
+
+tasks:
+  start-docker:
+    desc: Setups and starts the docker environment
+    cmds:
+      - docker compose -p directus_test up
+
+  stop-docker:
+    desc: Removes and stops the docker environment
+    cmds:
+      - docker compose -p directus_test down

@@ -1,0 +1,28 @@
+version: "3"
+services:
+  directus:
+    container_name: directus
+    build: .
+    ports:
+      - 8055:8055
+    volumes:
+      - ./cms/uploads:/directus/uploads
+      - ./cms/database:/directus/database
+      - ./cms/extensions:/directus/extensions
+    environment:
+      KEY: '255d861b-5ea1-5996-9aa3-922530ec40b1'
+      SECRET: '6116487b-cda1-52c2-b5b5-c8022c45e263'
+
+      DB_CLIENT: 'sqlite3'
+      DB_FILENAME: 'database/database.sql'
+
+      CACHE_ENABLED: false
+
+      ADMIN_EMAIL: 'admin@example.com'
+      ADMIN_PASSWORD: 'd1r3ctu5'
+
+      EXTENSIONS_AUTO_RELOAD: true
+      CHOKIDAR_USEPOLLING: true
+      CHOKIDAR_INTERVAL: 2000
+
+      PUBLIC_URL: 'http://localhost:8055/'
