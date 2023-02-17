@@ -31,8 +31,12 @@ module.exports = {
   rules: {
     "import/prefer-default-export": "off",
     "no-console": "off",
-    "@typescript-eslint/no-misused-promises": "off",
+
+    // Directus
     "no-param-reassign": "off",
+    "import/no-extraneous-dependencies": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-unsafe-member-access": "off",
   },
   ignorePatterns: ["*.mjs", "*.cjs", "**/*.js", "*.d.ts"],
   env: {

@@ -4,6 +4,6 @@
   "license": "MIT",
   "workspaces": [
     "modules/*",
-    "image_optimizer"
+    "extensions/*"
   ]
 }

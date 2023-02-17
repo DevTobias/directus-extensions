@@ -8,3 +8,7 @@ export const streamToBuffer = async (stream: Readable) => {
     stream.on('error', (err) => reject(err));
   });
 };
+
+export const readUnknownFromKey = (input: unknown, key: string): any | null => {
+  return (input as any)[key] !== undefined ? (input as any)[key] : null;
+};

@@ -2,18 +2,10 @@ import { generateAssetBundleFromBuffer } from 'imonizer';
 import { Readable } from 'stream';
 import directus from 'directus';
 
-type CreateFile = {
-  user_id: string;
-  directus_files_id: { id: string };
-};
+import { getConfig } from './config';
 
-interface OptimizeTarget {
-  o_profile: string;
-  profile?: { create: CreateFile[]; update: CreateFile[]; delete: CreateFile[] };
-}
-
-export const hasImageToOptimize = (input: unknown): input is OptimizeTarget => {
-  return (input as OptimizeTarget)?.o_profile !== undefined && typeof (input as OptimizeTarget).o_profile === 'string';
+export const getOptimizeKeys = (input: object) => {
+  return Object.entries(input).filter(([key]) => key.startsWith(getConfig().prefix));
 };
 
 type UploadConfig = {
@@ -31,7 +23,7 @@ export const uploadOptimizedBundleFromBuffer = async ({
   service,
   storage = 'local',
 }: UploadConfig) => {
-  const optimizedImages = await generateAssetBundleFromBuffer(['jpg', 'webp', 'avif'], [400, 800, 1000], buffer);
+  const optimizedImages = await generateAssetBundleFromBuffer(getConfig().files, getConfig().sizes, buffer);
 
   const uploadImages = optimizedImages.images.map(async (image) =>
     service.uploadOne(Readable.from(await image.buffer), {

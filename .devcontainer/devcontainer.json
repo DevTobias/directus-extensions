@@ -24,7 +24,7 @@
         "explorer.fileNesting.expand": false,
         "explorer.fileNesting.patterns": {
           "package.json": "tsconfig.json,.gitignore,.editorconfig",
-          "Taskfile.yml": "Dockerfile,docker-compose.yml"
+          "Taskfile.yml": "Dockerfile,docker-compose.yml,docker-compose.test.yml"
         },
         "files.exclude": {
           "**/yarn.lock": true,
@@ -44,7 +44,7 @@
         "eslint.codeAction.showDocumentation": {
           "enable": true
         },
-        "eslint.workingDirectories": ["image_optimizer"],
+        "eslint.workingDirectories": ["extensions/imonizer"],
 
         //! Formatters
         "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",

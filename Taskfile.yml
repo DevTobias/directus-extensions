@@ -1,12 +1,12 @@
-version: '3'
+version: "3"
 
 tasks:
   start-docker:
     desc: Setups and starts the docker environment
     cmds:
-      - docker compose -p directus_test up
+      - docker compose -p directus_imonizer_dev up
 
-  stop-docker:
-    desc: Removes and stops the docker environment
+  test-docker:
+    desc: Setups and starts the docker test environment
     cmds:
-      - docker compose -p directus_test down
+      - docker compose -f docker-compose.test.yml -p directus_imonizer_test up --build

@@ -13,20 +13,7 @@ export type HookContext = {
   database: Knex;
 };
 
-export type FileUploadMeta = {
-  payload: {
-    folder: string;
-    filename_download: string;
-    metadata: {
-      isOptimized?: boolean;
-    };
-  };
-  key: string;
-};
-
 export type DirectusFile = {
   folder: string;
   filename_download: string;
 };
-
-export const parseMeta = (meta: unknown) => meta as FileUploadMeta;
